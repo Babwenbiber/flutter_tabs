@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tab_bar/nav_bar.dart';
-import 'package:tab_bar/page2_2.dart';
-import 'package:tab_bar/stacks.dart';
+import 'package:tabtest/page2_2.dart';
+import 'package:tabtest/stacks.dart';
 
 class Page1_2 extends StatelessWidget {
   const Page1_2({
@@ -19,12 +18,21 @@ class Page1_2 extends StatelessWidget {
         automaticallyImplyLeading: true,
         title: Text("page 1 tab 2"),
       ),
-      bottomNavigationBar: NavBar(index: index),
-      body: GestureDetector(
-          onTap: () {
-            Stacks.stacks[index].add(Page2_2(index: index));
-          },
-          child: Center(child: Text("this is page 1 tab 2"))),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("this is page 1 tab 2"),
+            SizedBox(height: 20,),
+            FloatingActionButton.extended(
+              label: Text('next page'),
+              onPressed: () {
+                Stacks.push(index, Page2_2(index: index));
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }
