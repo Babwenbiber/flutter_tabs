@@ -1,14 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tabtest/page2_1.dart';
-import 'package:tabtest/stacks.dart';
-
+import 'package:tabtest/nav/navigation_utils.dart';
 
 class Page1_1 extends StatelessWidget {
-
-  const Page1_1({Key key, this.index}) : super(key: key);
-
-  final int index;
+  const Page1_1({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +18,14 @@ class Page1_1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("this is page 1 tab 1"),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             FloatingActionButton.extended(
-                label: Text('next page'),
-                onPressed: () {
-                  Stacks.push(index, Page2_1(index: index));
-                },
+              label: Text('next page'),
+              onPressed: () {
+                navigateToPage2_1();
+              },
             )
           ],
         ),
